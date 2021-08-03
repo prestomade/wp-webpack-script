@@ -234,9 +234,7 @@ export class WebpackConfigHelper {
 			// We do not use path.resolve, because we expect outputPath to be
 			// relative. @todo: create a test here
 			path: this.outputPath,
-			filename: `${this.appDir}/${
-				this.isDev ? '[name]' : '[name]-[contenthash:8]'
-			}.js`,
+			filename: `${this.appDir}/[name].js`,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
 			publicPath: '',
@@ -288,9 +286,7 @@ export class WebpackConfigHelper {
 			}) as unknown as webpack.Plugin,
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({
-				filename: `${this.appDir}/${
-					this.isDev ? '[name]' : '[name]-[contenthash:8]'
-				}.css`, // we do it this way, so that we can easily setup e2e tests, we can always predict what the name would be
+				filename: `${this.appDir}/[name].css`, // we do it this way, so that we can easily setup e2e tests, we can always predict what the name would be
 				ignoreOrder: false,
 			}),
 			// Create Manifest for PHP Consumption
